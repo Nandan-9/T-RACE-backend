@@ -20,17 +20,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(BASE_DIR / '.env')
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-pk!i191gd6n%sg@q9$d0j-zjv!gu&iclg@03y2&tj-wbmxfl9b'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["survivor-wildcat-barbell.ngrok-free.dev"]
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 # Application definition
