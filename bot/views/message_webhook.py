@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from ..services.send_message_service import send_message
+from ..services import message_services 
 
 class TelegramWebhook(APIView):
 
@@ -32,7 +32,10 @@ class TelegramWebhook(APIView):
             "chat_type": chat.get("type"),
         }
         print(data)
-        send_message(data["chat_id"],"hai daaa")
+
+        if data["text"] is not None:
+            response = message_services.ans_to_query(data["text"])
+            message_services.send_message(data["chat_id"],response)
 
 
         return Response(
