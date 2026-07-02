@@ -14,19 +14,3 @@ chat_llm = ChatAnthropic(
     api_key=os.getenv("ANTHROPIC_API_KEY"),
 )
 
-
-prompt = ChatPromptTemplate.from_messages([
-    ("system", system_message),
-    ("human","{question}")
-])
-
-
-chain = prompt | chat_llm
-
-
-def generate_response(question: str):
-    response = chain.invoke({
-        "context" : context_text,
-        "question" : question
-    })
-    return response.content

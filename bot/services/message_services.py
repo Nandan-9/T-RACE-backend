@@ -1,8 +1,7 @@
 
 import requests
 from django.conf import settings
-from ..llm.llm_services import generate_response
-
+from ..llm.rag import retrival
 
 BASE_URL = f"https://api.telegram.org/bot{settings.BOT_TOKEN}"
 
@@ -23,6 +22,6 @@ def ans_to_query(question):
     if not question:
         return "Sorry I am not able to answer at the moment"
     
-    # response = generate_response(question=question)
-    response = "under-development please cooperate"
-    return response
+    response =  retrival.rag_answer(question=question)
+    print(response)
+    return "under-development please cooperate"
